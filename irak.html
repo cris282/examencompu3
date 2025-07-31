@@ -6,38 +6,55 @@
     <title>irak</title>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles.css">
 <script>
-  let activa = null;
+let activa = null;
 
-  function mostrar(img, texto) {
-    activa = img;
-    img.style.left = '0px';
+window.onload = function() {
+  let imagenes = document.getElementsByClassName('imagen-personaje');
+  for (let i = 0; i < imagenes.length; i++) {
+    let img = imagenes[i];
+    if (!img.getAttribute('data-left')) {
+      img.setAttribute('data-left', img.style.left);
+    }
+  }
+};
 
-    document.querySelectorAll('.imagen-personaje').forEach(el => {
-      if (el !== img) el.style.display = 'none';
-    });
+function mostrar(img, texto) {
+  activa = img;
+  img.style.left = '0px';
 
-    let cuadro = document.getElementById('mag');
-    cuadro.style.width = 'calc(100% - 420px)';
-    document.getElementById('contenido').innerText = texto;
+  let imagenes = document.getElementsByClassName('imagen-personaje');
+  for (let i = 0; i < imagenes.length; i++) {
+    if (imagenes[i] !== img) {
+      imagenes[i].style.display = 'none';
+    }
   }
 
-  function ocultar() {
-    if (!activa) return;
+  let cuadro = document.getElementById('mag');
+  cuadro.style.top = img.style.top;
+  cuadro.style.width = 'calc(100% - 420px)';
+  document.getElementById('contenido').innerText = texto;
+}
 
-    if (activa.id === 'img1') activa.style.left = '50px';
-    if (activa.id === 'img2') activa.style.left = '510px';
-    if (activa.id === 'img3') activa.style.left = '990px';
+function ocultar() {
+  if (!activa) return;
 
-    document.querySelectorAll('.imagen-personaje').forEach(el => {
-      el.style.display = 'block';
-    });
+  activa.style.left = activa.getAttribute('data-left');
 
-    document.getElementById('mag').style.width = '0%';
-    document.getElementById('contenido').innerText = '';
-    activa = null;
+  let imagenes = document.getElementsByClassName('imagen-personaje');
+  for (let i = 0; i < imagenes.length; i++) {
+    imagenes[i].style.display = 'block';
   }
+
+  let cuadro = document.getElementById('mag');
+  cuadro.style.width = '0%';
+  document.getElementById('contenido').innerText = '';
+
+  activa = null;
+}
 </script>
 
 
@@ -113,7 +130,80 @@ Además, el país arrastra una gran deuda pública, está obligado a importar gr
 <img src="historia.jpg" alt="" style="position: absolute; top: 2600px; border-radius: 300px; width: 500px; height: 500px;">
 <h2 style="height: 500px; width: 900px; position: absolute; top: 2600px; left: 520px; font-family: 'Courier New', Courier, monospace; font-size: 14pt;">Irak, ubicado en la región histórica de Mesopotamia entre los ríos Tigris y Éufrates, es una de las cunas de la civilización humana, donde surgieron las primeras ciudades, la escritura y complejos sistemas legales hace más de 5,000 años. A lo largo de su historia, fue hogar de grandes imperios como el sumerio, acadiano, babilonio y asirio. En la antigüedad clásica, estuvo bajo dominio persa, luego conquistado por Alejandro Magno, y más tarde parte del Imperio Romano y Bizantino. Con la expansión islámica en el siglo VII, Bagdad se convirtió en la capital del califato abasí, transformándose en un centro mundial de cultura, ciencia y comercio durante la Edad Media. En los siglos siguientes, Irak fue gobernado por otomanos hasta el final de la Primera Guerra Mundial, cuando pasó a ser un mandato británico. En 1932 alcanzó la independencia y posteriormente enfrentó varios golpes de estado y conflictos internos. A finales del siglo XX, estuvo marcado por dictaduras, guerras como la de Irán-Irak, la invasión de Kuwait y la posterior guerra liderada por EE. UU. en 2003 que derrocó a Saddam Hussein. Desde entonces, Irak ha luchado por estabilizarse, enfrentando insurgencias, conflictos sectarios y la presencia de grupos extremistas, mientras trabaja en su reconstrucción y reconciliación nacional.</h2>
 
-<img src="turistis1.jpg" alt="">
+
+<img src="turistis1.jpg" id="img4" data-left="30px" class="imagen-personaje" style="width: 400px; font-size: 7pt; height: 400px; position: absolute; top: 3200px; left: 30px; border-radius: 30px;"
+  onclick="mostrar(this, `Karbala es una ciudad situada en el centro-sur de Irak, reconocida principalmente por su profunda importancia religiosa y cultural dentro del islam chií. Es el lugar donde ocurrió la Batalla de Karbala en el año 680 d.C., un evento que marcó un antes y un después en la historia del chiísmo y la comunidad islámica en general. La batalla resultó en la muerte del Imam Husayn, nieto del profeta Mahoma, lo que convirtió a Karbala en un símbolo de sacrificio, resistencia y justicia para millones de creyentes. Cada año, millones de peregrinos viajan a Karbala para conmemorar el Arbaín, que es el aniversario del martirio de Husayn, convirtiéndose en una de las mayores manifestaciones religiosas del mundo. La ciudad alberga el majestuoso santuario del Imam Husayn, un complejo arquitectónico impresionante con cúpulas doradas y elaborados mosaicos que reflejan la devoción de sus visitantes. Además de su importancia espiritual, Karbala también es un centro cultural con tradiciones ancestrales que se mantienen vivas en festividades y rituales que atraen a creyentes de diversas partes del mundo.`)" ondblclick="ocultar()">
+
+<img src="truis2.jpg" id="img5" data-left="450px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 450px; border-radius: 30px;"
+  onclick="mostrar(this, `Erbil, también conocida como Hawler en kurdo, es la capital de la Región Autónoma del Kurdistán en el norte de Irak y una de las ciudades habitadas más antiguas del mundo, con una historia que se remonta a más de 6,000 años. Su centro histórico más emblemático es la Ciudadela de Erbil, una fortaleza que domina el paisaje urbano desde una colina y que ha sido continuamente habitada desde tiempos antiguos hasta la actualidad. La Ciudadela está declarada Patrimonio de la Humanidad por la UNESCO debido a su valor arqueológico y cultural, y representa un testimonio vivo de las diversas civilizaciones que han pasado por la región. Erbil es una ciudad vibrante y moderna que combina el respeto por su legado histórico con un rápido desarrollo urbano y económico. En ella conviven diversas comunidades étnicas y religiosas, y se ha convertido en un importante centro de comercio, turismo y educación en el norte de Irak, con una oferta cultural rica que incluye museos, mercados tradicionales y festivales.`)" ondblclick="ocultar()">
+
+<img src="trusi3.jpg" id="img6" data-left="870px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 870px; border-radius: 30px;"
+onclick="mostrar(this, `Hatra fue una ciudad antigua fortificada situada en el desierto del norte de Irak, fundada alrededor del siglo III a.C. y desarrollada bajo el dominio de los partos. Fue una importante capital religiosa y comercial, famosa por sus impresionantes murallas y templos que mezclan influencias helenísticas, romanas y mesopotámicas. La ciudad se destacó por su resistencia frente a las invasiones romanas, siendo un baluarte estratégico que mantuvo su autonomía durante varios siglos. Las ruinas de Hatra, declaradas Patrimonio de la Humanidad por la UNESCO, ofrecen una visión excepcional de la arquitectura religiosa y militar de la antigüedad en esta región, con templos bien conservados y relieves detallados que reflejan la riqueza cultural del lugar. Aunque sufrió daños significativos en tiempos recientes debido a conflictos, Hatra sigue siendo un símbolo invaluable del patrimonio histórico de Irak y una fuente importante para entender las civilizaciones que habitaron Mesopotamia.`)" ondblclick="ocultar()">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!--carrusel-->
+
+
+<div id="controls-carousel" class="relative w-full" data-carousel="static">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="irak.webp" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <h1 style="color: black;">Vestimenta tradicional masculina en Irak</h1>
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="irakv.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="irakper1.webp" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<!--findecarrusel-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
