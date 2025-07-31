@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>irak</title>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css">
+<script>
+  let activa = null;
+
+  function mostrar(img, texto) {
+    activa = img;
+    img.style.left = '0px';
+
+    document.querySelectorAll('.imagen-personaje').forEach(el => {
+      if (el !== img) el.style.display = 'none';
+    });
+
+    let cuadro = document.getElementById('mag');
+    cuadro.style.width = 'calc(100% - 420px)';
+    document.getElementById('contenido').innerText = texto;
+  }
+
+  function ocultar() {
+    if (!activa) return;
+
+    if (activa.id === 'img1') activa.style.left = '50px';
+    if (activa.id === 'img2') activa.style.left = '510px';
+    if (activa.id === 'img3') activa.style.left = '990px';
+
+    document.querySelectorAll('.imagen-personaje').forEach(el => {
+      el.style.display = 'block';
+    });
+
+    document.getElementById('mag').style.width = '0%';
+    document.getElementById('contenido').innerText = '';
+    activa = null;
+  }
+</script>
+
+
+
+</head>
+<body style="background-color: rgba(0, 0, 0, 0.212);">
+    <!--nav-->
+<nav class="bg-red-200 border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="xxxvideos.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="irakv.svg" class="h-8" alt="Flowbite Logo" style="border-radius: 30px;" >
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Irak</span>
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <!--findenav-->
+ <h1 style="text-align: center; font-size: 20pt; border-radius: 30px;">Inestabilidad política y corrupción</h1>
+ <br><br>
+<img src="probelma irak 1.jpg" alt="" id="problem" style=" border-radius: 30px; height: 400px; width: 450px; position: absolute; top: 200px; left: 70px;">
+<h2 id="sd">Desde la caída del régimen de Saddam Hussein en 2003, Irak ha atravesado una larga y compleja etapa de transición política marcada por la inestabilidad, la desconfianza entre comunidades y la debilidad institucional. El sistema de gobierno que se instauró tras la invasión estadounidense intentó ser democrático, pero ha estado plagado de corrupción, clientelismo y una fuerte división sectaria. La política iraquí se organiza en gran medida en función de identidades religiosas y étnicas: chiíes, sunitas y kurdos. Esto ha generado un sistema de reparto de poder (conocido como sistema de cuotas) que, en lugar de unir, ha profundizado las divisiones internas y ha debilitado al Estado central.
+
+Los kurdos en el norte gozan de una autonomía considerable a través de la Región Autónoma del Kurdistán, con su propio parlamento y fuerzas de seguridad (Peshmerga), lo que genera tensiones constantes con el gobierno central en Bagdad, especialmente por el control de zonas ricas en petróleo como Kirkuk. Por su parte, muchos grupos chiíes dominan las estructuras de poder en Bagdad, lo que ha alimentado el resentimiento de la minoría sunita, que durante décadas tuvo el control bajo Saddam.
+
+Además, el país ha sido escenario de numerosas protestas ciudadanas, como las masivas movilizaciones de 2019, donde miles de jóvenes exigieron reformas políticas profundas, el fin de la corrupción y mejores servicios públicos. Estas protestas fueron reprimidas con violencia, dejando cientos de muertos, y pusieron en evidencia la desconexión entre la clase política y la población.
+
+El rol de potencias extranjeras también contribuye a la inestabilidad. Irán tiene una fuerte influencia sobre milicias chiíes y partidos políticos, mientras que Estados Unidos mantiene una presencia militar limitada y apoya a ciertos sectores del gobierno. Este juego de influencias crea un escenario de competencia internacional dentro del país, que limita la soberanía real del Estado iraquí y genera conflictos políticos internos.</h2>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1 style="text-align: center; font-size: 20pt; ">Violencia, terrorismo y seguridad frágil</h1>
+<img src="probelma 2.jpg" alt="" style=" border-radius: 30px; height: 400px; width: 450px; position: absolute; top: 900px; left: 1000px;">
+<h2 id="segunda">La seguridad en Irak ha sido una preocupación constante durante las últimas décadas. Tras la invasión de 2003, el país se sumió en una ola de violencia sectaria que alcanzó su punto más crítico entre 2006 y 2008, con atentados suicidas, asesinatos selectivos y desplazamientos masivos de población por motivos religiosos. Aunque la situación mejoró levemente, el surgimiento del grupo terrorista Estado Islámico (ISIS) en 2014 llevó a una nueva catástrofe.
+ISIS tomó vastas extensiones del norte y el oeste del país, incluyendo la ciudad de Mosul, la segunda más grande del país. Durante varios años, el grupo gobernó con extrema violencia, ejecutó a miles de personas y destruyó patrimonio cultural. Aunque en 2017 el gobierno iraquí declaró la victoria sobre el Estado Islámico, sus células aún están activas en zonas rurales y montañosas, y continúan realizando ataques, especialmente en las provincias de Nínive, Diyala, Salah ad-Din y Kirkuk.
+Aparte del terrorismo yihadista, otro gran problema es la existencia de milicias armadas que, aunque muchas lucharon contra ISIS, hoy representan una amenaza para el Estado de derecho. Muchas de estas milicias están vinculadas a partidos políticos o a potencias extranjeras (principalmente Irán), y operan con gran autonomía, a veces por fuera del control del Estado. Algunas han sido acusadas de abusos contra los derechos humanos, secuestros, extorsión y asesinatos de activistas.
+Este entorno de inseguridad también ha provocado grandes desplazamientos internos. A día de hoy, más de un millón de iraquíes siguen siendo desplazados internos, viviendo en condiciones precarias y sin garantías de retorno seguro a sus lugares de origen.</h2>
+<h1 style="text-align: center; font-size: 20pt; top: 1400px; position: absolute; left: 30%; ">Crisis económica estructural y servicios deficientes</h1>
+<img src="problem3.jpg" alt="" style=" border-radius: 30px; height: 400px; width: 450px; position: absolute; top: 1500px; left: 10px;">
+<h2 id="as">Aunque Irak es uno de los países con mayores reservas de petróleo del mundo, su economía es extremadamente vulnerable. Más del 90% del presupuesto nacional depende de la exportación de petróleo, lo que significa que cualquier caída en el precio del crudo (como ocurrió en 2020) puede provocar una crisis fiscal. Esta falta de diversificación económica ha impedido el desarrollo de otros sectores productivos como la agricultura, la industria o el turismo.
+
+La corrupción es otro problema estructural. Irak figura constantemente entre los países más corruptos del mundo, según Transparencia Internacional. Altos niveles de corrupción, clientelismo y redes de poder han hecho que miles de millones de dólares en ingresos públicos desaparezcan o se utilicen de forma ineficiente. Esto ha provocado un deterioro crónico de los servicios básicos.
+
+Muchas zonas del país sufren cortes de electricidad diarios, falta de agua potable, hospitales colapsados y escuelas en mal estado. En verano, cuando las temperaturas superan los 50 °C, muchas regiones quedan sin electricidad ni agua durante días, lo que provoca malestar social generalizado. Esta crisis se extiende también al empleo: el desempleo juvenil supera el 25%, y muchos jóvenes con educación universitaria no encuentran oportunidades, lo que alimenta el malestar y la migración.
+
+Además, el país arrastra una gran deuda pública, está obligado a importar gran parte de los alimentos que consume, y su población sigue creciendo rápidamente. Esto crea una presión enorme sobre los recursos limitados del Estado. La falta de inversión en infraestructura, educación y salud ha generado una sensación de abandono generalizado, especialmente entre los más jóvenes, que sienten que no tienen futuro dentro del país.</h2>
+
+<div id="mag">
+<p id="contenido"></p>
+</div>
+<img src="irakper1.webp" class="img1" class="imagen-personaje" style="left: 50px; border-radius: 30px;" onclick="mostrar(this, `Fayez al-Sarraj es un político y arquitecto libio que fue Primer Ministro del Gobierno de Acuerdo Nacional (GNA) de Libia entre 2016 y 2021, tras ser designado por un acuerdo respaldado por la ONU para unificar al país en medio de la guerra civil. Nacido en Trípoli en 1960, lideró un gobierno con sede en el oeste del país, enfrentando constantes conflictos con las autoridades rivales del este y el mariscal Khalifa Haftar. Su mandato estuvo marcado por intentos de reconciliación nacional, tensiones militares y presiones internas. En 2021, entregó pacíficamente el poder al nuevo gobierno de transición liderado por Abdul Hamid Dbeibeh.`)" ondblclick="ocultar()">
+<img src="perso2.jpg" class="img2" class="imagen-personaje" style="left: 510px; border-radius: 30px;" onclick="mostrar(this, `Zaha Hadid (1950–2016) fue una reconocida arquitecta iraquí-británica y una de las figuras más influyentes de la arquitectura contemporánea. Nacida en Bagdad, estudió matemáticas antes de formarse en arquitectura en Londres, donde más tarde fundó su propio estudio. Fue la primera mujer en recibir el prestigioso Premio Pritzker en 2004. Su estilo se caracteriza por formas futuristas, líneas curvas, estructuras dinámicas y un enfoque audaz que rompió con la rigidez tradicional. Entre sus obras más famosas están el Centro Heydar Aliyev en Azerbaiyán, el Museo MAXXI en Roma y la Ópera de Guangzhou en China. Su trabajo revolucionó el diseño arquitectónico global, dejando un legado duradero.`)" ondblclick="ocultar()">
+<img src="person3.jpg" class="img3" class="imagen-personaje" style="left: 990px; border-radius: 30px;" onclick="mostrar(this, `Nazik al-Malaika (1923–2007) fue una destacada poeta iraquí y pionera de la poesía árabe moderna, conocida por introducir el verso libre en la literatura árabe con su poema El lamento del marinero (1947). Nacida en Bagdad en una familia culta, combinó su formación académica en literatura con una profunda sensibilidad artística. Sus obras abordan temas como la soledad, la condición de la mujer, la injusticia social y la angustia existencial. Vivió en el exilio por motivos políticos, enseñando en universidades de países como Egipto y Kuwait. Su estilo innovador y su voz crítica la convirtieron en una figura clave del modernismo literario árabe.`)" ondblclick="ocultar()">
+
+<img src="historia.jpg" alt="" style="position: absolute; top: 2600px; border-radius: 300px; width: 500px; height: 500px;">
+<h2 style="height: 500px; width: 900px; position: absolute; top: 2600px; left: 520px; font-family: 'Courier New', Courier, monospace; font-size: 14pt;">Irak, ubicado en la región histórica de Mesopotamia entre los ríos Tigris y Éufrates, es una de las cunas de la civilización humana, donde surgieron las primeras ciudades, la escritura y complejos sistemas legales hace más de 5,000 años. A lo largo de su historia, fue hogar de grandes imperios como el sumerio, acadiano, babilonio y asirio. En la antigüedad clásica, estuvo bajo dominio persa, luego conquistado por Alejandro Magno, y más tarde parte del Imperio Romano y Bizantino. Con la expansión islámica en el siglo VII, Bagdad se convirtió en la capital del califato abasí, transformándose en un centro mundial de cultura, ciencia y comercio durante la Edad Media. En los siglos siguientes, Irak fue gobernado por otomanos hasta el final de la Primera Guerra Mundial, cuando pasó a ser un mandato británico. En 1932 alcanzó la independencia y posteriormente enfrentó varios golpes de estado y conflictos internos. A finales del siglo XX, estuvo marcado por dictaduras, guerras como la de Irán-Irak, la invasión de Kuwait y la posterior guerra liderada por EE. UU. en 2003 que derrocó a Saddam Hussein. Desde entonces, Irak ha luchado por estabilizarse, enfrentando insurgencias, conflictos sectarios y la presencia de grupos extremistas, mientras trabaja en su reconstrucción y reconciliación nacional.</h2>
+
+<img src="turistis1.jpg" alt="">
+
+
+
+</body>
+</html>

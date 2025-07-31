@@ -202,7 +202,7 @@ z-index: 4;
   background-image: url("turquiasd.jpg");
 }
 #img6 {
-  top: 260px;
+  top: 250px;
   left: 580px;
   width: 470px;
   height: 320px;
@@ -211,4 +211,15 @@ z-index: 4;
   border-radius: 20px;
   transform: rotate(-15deg);
   background-image: url("sirasr.jpg");
+}
+#img7{
+  top: 50px;
+  left: 880px;
+  width: 470px;
+  height: 320px;
+  z-index: 3;
+  position: absolute;
+  border-radius: 20px;
+  transform: rotate(65deg);
+  background-image: url("turqus.jpg");
 }
