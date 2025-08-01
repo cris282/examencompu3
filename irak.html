@@ -10,51 +10,74 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles.css">
 <script>
-let activa = null;
+  let activa = null;
 
-window.onload = function() {
-  let imagenes = document.getElementsByClassName('imagen-personaje');
-  for (let i = 0; i < imagenes.length; i++) {
-    let img = imagenes[i];
-    if (!img.getAttribute('data-left')) {
-      img.setAttribute('data-left', img.style.left);
+  window.onload = function () {
+    let imagenes = document.getElementsByClassName('imagen-personaje');
+    for (let i = 0; i < imagenes.length; i++) {
+      let img = imagenes[i];
+      if (!img.getAttribute('data-left')) {
+        img.setAttribute('data-left', img.style.left);
+      }
     }
-  }
-};
+  };
 
-function mostrar(img, texto) {
-  activa = img;
-  img.style.left = '0px';
+  function mostrar(img, texto) {
+    activa = img;
+    img.style.left = '0px';
 
-  let imagenes = document.getElementsByClassName('imagen-personaje');
-  for (let i = 0; i < imagenes.length; i++) {
-    if (imagenes[i] !== img) {
-      imagenes[i].style.display = 'none';
+    let imagenes = document.getElementsByClassName('imagen-personaje');
+    for (let i = 0; i < imagenes.length; i++) {
+      if (imagenes[i] !== img) {
+        imagenes[i].style.display = 'none';
+      }
     }
+
+    let cuadro = document.getElementById('mag');
+    cuadro.style.top = img.style.top;
+    cuadro.style.width = 'calc(100% - 420px)';
+    document.getElementById('contenido').innerText = texto;
   }
 
-  let cuadro = document.getElementById('mag');
-  cuadro.style.top = img.style.top;
-  cuadro.style.width = 'calc(100% - 420px)';
-  document.getElementById('contenido').innerText = texto;
-}
+  function ocultar() {
+    if (!activa) return;
 
-function ocultar() {
-  if (!activa) return;
+    activa.style.left = activa.getAttribute('data-left');
 
-  activa.style.left = activa.getAttribute('data-left');
+    let imagenes = document.getElementsByClassName('imagen-personaje');
+    for (let i = 0; i < imagenes.length; i++) {
+      imagenes[i].style.display = 'block';
+    }
 
-  let imagenes = document.getElementsByClassName('imagen-personaje');
-  for (let i = 0; i < imagenes.length; i++) {
-    imagenes[i].style.display = 'block';
+    let cuadro = document.getElementById('mag');
+    cuadro.style.width = '0%';
+    document.getElementById('contenido').innerText = '';
+
+    activa = null;
   }
 
-  let cuadro = document.getElementById('mag');
-  cuadro.style.width = '0%';
-  document.getElementById('contenido').innerText = '';
+ function tirar() {
+    const img = document.getElementById('sex');
+    const video = document.getElementById('video');
 
-  activa = null;
-}
+    // Mover la imagen a la derecha
+    img.style.left = '1000px';
+
+    // Esperar a que termine la transición
+    img.addEventListener('transitionend', function handler() {
+      // Ocultar la imagen
+      img.style.display = 'none';
+
+      // Posicionar y mostrar el video en su lugar original
+      video.style.left = '0px';
+      video.style.top = img.style.top;
+      video.style.width = img.style.width;
+      video.style.display = 'block';
+
+      // Remover listener para que no se active varias veces
+      img.removeEventListener('transitionend', handler);
+    });
+  }
 </script>
 
 
@@ -105,7 +128,7 @@ Además, el país ha sido escenario de numerosas protestas ciudadanas, como las 
 El rol de potencias extranjeras también contribuye a la inestabilidad. Irán tiene una fuerte influencia sobre milicias chiíes y partidos políticos, mientras que Estados Unidos mantiene una presencia militar limitada y apoya a ciertos sectores del gobierno. Este juego de influencias crea un escenario de competencia internacional dentro del país, que limita la soberanía real del Estado iraquí y genera conflictos políticos internos.</h2>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h1 style="text-align: center; font-size: 20pt; ">Violencia, terrorismo y seguridad frágil</h1>
-<img src="probelma 2.jpg" alt="" style=" border-radius: 30px; height: 400px; width: 450px; position: absolute; top: 900px; left: 1000px;">
+<img src="probelma 2.jpg" alt="" style=" border-radius: 30px; height: 400px; width: 450px; position: absolute; top: 900px; left: 870px;">
 <h2 id="segunda">La seguridad en Irak ha sido una preocupación constante durante las últimas décadas. Tras la invasión de 2003, el país se sumió en una ola de violencia sectaria que alcanzó su punto más crítico entre 2006 y 2008, con atentados suicidas, asesinatos selectivos y desplazamientos masivos de población por motivos religiosos. Aunque la situación mejoró levemente, el surgimiento del grupo terrorista Estado Islámico (ISIS) en 2014 llevó a una nueva catástrofe.
 ISIS tomó vastas extensiones del norte y el oeste del país, incluyendo la ciudad de Mosul, la segunda más grande del país. Durante varios años, el grupo gobernó con extrema violencia, ejecutó a miles de personas y destruyó patrimonio cultural. Aunque en 2017 el gobierno iraquí declaró la victoria sobre el Estado Islámico, sus células aún están activas en zonas rurales y montañosas, y continúan realizando ataques, especialmente en las provincias de Nínive, Diyala, Salah ad-Din y Kirkuk.
 Aparte del terrorismo yihadista, otro gran problema es la existencia de milicias armadas que, aunque muchas lucharon contra ISIS, hoy representan una amenaza para el Estado de derecho. Muchas de estas milicias están vinculadas a partidos políticos o a potencias extranjeras (principalmente Irán), y operan con gran autonomía, a veces por fuera del control del Estado. Algunas han sido acusadas de abusos contra los derechos humanos, secuestros, extorsión y asesinatos de activistas.
@@ -124,51 +147,76 @@ Además, el país arrastra una gran deuda pública, está obligado a importar gr
 <p id="contenido"></p>
 </div>
 <img src="irakper1.webp" id="img1" class="imagen-personaje" style="left: 50px; border-radius: 30px;" onclick="mostrar(this, `Fayez al-Sarraj es un político y arquitecto libio que fue Primer Ministro del Gobierno de Acuerdo Nacional (GNA) de Libia entre 2016 y 2021, tras ser designado por un acuerdo respaldado por la ONU para unificar al país en medio de la guerra civil. Nacido en Trípoli en 1960, lideró un gobierno con sede en el oeste del país, enfrentando constantes conflictos con las autoridades rivales del este y el mariscal Khalifa Haftar. Su mandato estuvo marcado por intentos de reconciliación nacional, tensiones militares y presiones internas. En 2021, entregó pacíficamente el poder al nuevo gobierno de transición liderado por Abdul Hamid Dbeibeh.`)" ondblclick="ocultar()">
-<img src="perso2.jpg" id="img2" class="imagen-personaje" style="left: 510px; border-radius: 30px;" onclick="mostrar(this, `Zaha Hadid (1950–2016) fue una reconocida arquitecta iraquí-británica y una de las figuras más influyentes de la arquitectura contemporánea. Nacida en Bagdad, estudió matemáticas antes de formarse en arquitectura en Londres, donde más tarde fundó su propio estudio. Fue la primera mujer en recibir el prestigioso Premio Pritzker en 2004. Su estilo se caracteriza por formas futuristas, líneas curvas, estructuras dinámicas y un enfoque audaz que rompió con la rigidez tradicional. Entre sus obras más famosas están el Centro Heydar Aliyev en Azerbaiyán, el Museo MAXXI en Roma y la Ópera de Guangzhou en China. Su trabajo revolucionó el diseño arquitectónico global, dejando un legado duradero.`)" ondblclick="ocultar()">
-<img src="person3.jpg" id="img3" class="imagen-personaje" style="left: 990px; border-radius: 30px;" onclick="mostrar(this, `Nazik al-Malaika (1923–2007) fue una destacada poeta iraquí y pionera de la poesía árabe moderna, conocida por introducir el verso libre en la literatura árabe con su poema El lamento del marinero (1947). Nacida en Bagdad en una familia culta, combinó su formación académica en literatura con una profunda sensibilidad artística. Sus obras abordan temas como la soledad, la condición de la mujer, la injusticia social y la angustia existencial. Vivió en el exilio por motivos políticos, enseñando en universidades de países como Egipto y Kuwait. Su estilo innovador y su voz crítica la convirtieron en una figura clave del modernismo literario árabe.`)" ondblclick="ocultar()">
+<img src="perso2.jpg" id="img2" class="imagen-personaje" style="left: 490px; border-radius: 30px;" onclick="mostrar(this, `Zaha Hadid (1950–2016) fue una reconocida arquitecta iraquí-británica y una de las figuras más influyentes de la arquitectura contemporánea. Nacida en Bagdad, estudió matemáticas antes de formarse en arquitectura en Londres, donde más tarde fundó su propio estudio. Fue la primera mujer en recibir el prestigioso Premio Pritzker en 2004. Su estilo se caracteriza por formas futuristas, líneas curvas, estructuras dinámicas y un enfoque audaz que rompió con la rigidez tradicional. Entre sus obras más famosas están el Centro Heydar Aliyev en Azerbaiyán, el Museo MAXXI en Roma y la Ópera de Guangzhou en China. Su trabajo revolucionó el diseño arquitectónico global, dejando un legado duradero.`)" ondblclick="ocultar()">
+<img src="person3.jpg" id="img3" class="imagen-personaje" style="left: 940px; border-radius: 30px;" onclick="mostrar(this, `Nazik al-Malaika (1923–2007) fue una destacada poeta iraquí y pionera de la poesía árabe moderna, conocida por introducir el verso libre en la literatura árabe con su poema El lamento del marinero (1947). Nacida en Bagdad en una familia culta, combinó su formación académica en literatura con una profunda sensibilidad artística. Sus obras abordan temas como la soledad, la condición de la mujer, la injusticia social y la angustia existencial. Vivió en el exilio por motivos políticos, enseñando en universidades de países como Egipto y Kuwait. Su estilo innovador y su voz crítica la convirtieron en una figura clave del modernismo literario árabe.`)" ondblclick="ocultar()">
 
 <img src="historia.jpg" alt="" style="position: absolute; top: 2600px; border-radius: 300px; width: 500px; height: 500px;">
-<h2 style="height: 500px; width: 900px; position: absolute; top: 2600px; left: 520px; font-family: 'Courier New', Courier, monospace; font-size: 14pt;">Irak, ubicado en la región histórica de Mesopotamia entre los ríos Tigris y Éufrates, es una de las cunas de la civilización humana, donde surgieron las primeras ciudades, la escritura y complejos sistemas legales hace más de 5,000 años. A lo largo de su historia, fue hogar de grandes imperios como el sumerio, acadiano, babilonio y asirio. En la antigüedad clásica, estuvo bajo dominio persa, luego conquistado por Alejandro Magno, y más tarde parte del Imperio Romano y Bizantino. Con la expansión islámica en el siglo VII, Bagdad se convirtió en la capital del califato abasí, transformándose en un centro mundial de cultura, ciencia y comercio durante la Edad Media. En los siglos siguientes, Irak fue gobernado por otomanos hasta el final de la Primera Guerra Mundial, cuando pasó a ser un mandato británico. En 1932 alcanzó la independencia y posteriormente enfrentó varios golpes de estado y conflictos internos. A finales del siglo XX, estuvo marcado por dictaduras, guerras como la de Irán-Irak, la invasión de Kuwait y la posterior guerra liderada por EE. UU. en 2003 que derrocó a Saddam Hussein. Desde entonces, Irak ha luchado por estabilizarse, enfrentando insurgencias, conflictos sectarios y la presencia de grupos extremistas, mientras trabaja en su reconstrucción y reconciliación nacional.</h2>
+<h2 style="height: 500px; width: 800px; position: absolute; top: 2600px; left: 520px; font-family: 'Courier New', Courier, monospace; font-size: 14pt;">Irak, ubicado en la región histórica de Mesopotamia entre los ríos Tigris y Éufrates, es una de las cunas de la civilización humana, donde surgieron las primeras ciudades, la escritura y complejos sistemas legales hace más de 5,000 años. A lo largo de su historia, fue hogar de grandes imperios como el sumerio, acadiano, babilonio y asirio. En la antigüedad clásica, estuvo bajo dominio persa, luego conquistado por Alejandro Magno, y más tarde parte del Imperio Romano y Bizantino. Con la expansión islámica en el siglo VII, Bagdad se convirtió en la capital del califato abasí, transformándose en un centro mundial de cultura, ciencia y comercio durante la Edad Media. En los siglos siguientes, Irak fue gobernado por otomanos hasta el final de la Primera Guerra Mundial, cuando pasó a ser un mandato británico. En 1932 alcanzó la independencia y posteriormente enfrentó varios golpes de estado y conflictos internos. A finales del siglo XX, estuvo marcado por dictaduras, guerras como la de Irán-Irak, la invasión de Kuwait y la posterior guerra liderada por EE. UU. en 2003 que derrocó a Saddam Hussein. Desde entonces, Irak ha luchado por estabilizarse, enfrentando insurgencias, conflictos sectarios y la presencia de grupos extremistas, mientras trabaja en su reconstrucción y reconciliación nacional.</h2>
 
 
 <img src="turistis1.jpg" id="img4" data-left="30px" class="imagen-personaje" style="width: 400px; font-size: 7pt; height: 400px; position: absolute; top: 3200px; left: 30px; border-radius: 30px;"
   onclick="mostrar(this, `Karbala es una ciudad situada en el centro-sur de Irak, reconocida principalmente por su profunda importancia religiosa y cultural dentro del islam chií. Es el lugar donde ocurrió la Batalla de Karbala en el año 680 d.C., un evento que marcó un antes y un después en la historia del chiísmo y la comunidad islámica en general. La batalla resultó en la muerte del Imam Husayn, nieto del profeta Mahoma, lo que convirtió a Karbala en un símbolo de sacrificio, resistencia y justicia para millones de creyentes. Cada año, millones de peregrinos viajan a Karbala para conmemorar el Arbaín, que es el aniversario del martirio de Husayn, convirtiéndose en una de las mayores manifestaciones religiosas del mundo. La ciudad alberga el majestuoso santuario del Imam Husayn, un complejo arquitectónico impresionante con cúpulas doradas y elaborados mosaicos que reflejan la devoción de sus visitantes. Además de su importancia espiritual, Karbala también es un centro cultural con tradiciones ancestrales que se mantienen vivas en festividades y rituales que atraen a creyentes de diversas partes del mundo.`)" ondblclick="ocultar()">
 
-<img src="truis2.jpg" id="img5" data-left="450px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 450px; border-radius: 30px;"
+<img src="truis2.jpg" id="img5" data-left="450px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 480px; border-radius: 30px;"
   onclick="mostrar(this, `Erbil, también conocida como Hawler en kurdo, es la capital de la Región Autónoma del Kurdistán en el norte de Irak y una de las ciudades habitadas más antiguas del mundo, con una historia que se remonta a más de 6,000 años. Su centro histórico más emblemático es la Ciudadela de Erbil, una fortaleza que domina el paisaje urbano desde una colina y que ha sido continuamente habitada desde tiempos antiguos hasta la actualidad. La Ciudadela está declarada Patrimonio de la Humanidad por la UNESCO debido a su valor arqueológico y cultural, y representa un testimonio vivo de las diversas civilizaciones que han pasado por la región. Erbil es una ciudad vibrante y moderna que combina el respeto por su legado histórico con un rápido desarrollo urbano y económico. En ella conviven diversas comunidades étnicas y religiosas, y se ha convertido en un importante centro de comercio, turismo y educación en el norte de Irak, con una oferta cultural rica que incluye museos, mercados tradicionales y festivales.`)" ondblclick="ocultar()">
 
-<img src="trusi3.jpg" id="img6" data-left="870px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 870px; border-radius: 30px;"
-onclick="mostrar(this, `Hatra fue una ciudad antigua fortificada situada en el desierto del norte de Irak, fundada alrededor del siglo III a.C. y desarrollada bajo el dominio de los partos. Fue una importante capital religiosa y comercial, famosa por sus impresionantes murallas y templos que mezclan influencias helenísticas, romanas y mesopotámicas. La ciudad se destacó por su resistencia frente a las invasiones romanas, siendo un baluarte estratégico que mantuvo su autonomía durante varios siglos. Las ruinas de Hatra, declaradas Patrimonio de la Humanidad por la UNESCO, ofrecen una visión excepcional de la arquitectura religiosa y militar de la antigüedad en esta región, con templos bien conservados y relieves detallados que reflejan la riqueza cultural del lugar. Aunque sufrió daños significativos en tiempos recientes debido a conflictos, Hatra sigue siendo un símbolo invaluable del patrimonio histórico de Irak y una fuente importante para entender las civilizaciones que habitaron Mesopotamia.`)" ondblclick="ocultar()">
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<img src="trusi3.jpg" id="img6" data-left="870px" class="imagen-personaje" style="width: 400px; height: 400px; position: absolute; top: 3200px; left: 910px; border-radius: 30px;"
+onclick="mostrar(this, `Hatra fue una ciudad antigua fortificada situada en el desierto del norte de Irak, fundada alrededor del siglo III a.C. y desarrollada bajo el dominio de los partos. Fue una importante capital religiosa y comercial, famosa por sus impresionantes murallas y templos que mezclan influencias helenísticas, romanas y mesopotámicas. La ciudad se destacó por su resistencia frente a las invasiones romanas, siendo un baluarte estratégico que mantuvo su autonomía durante varios siglos. Las ruinas de Hatra, declaradas Patrimonio de la Humanidad por la UNESCO, ofrecen una visión excepcional de la arquitectura religiosa y militar de la antigüedad en esta región, con templos bien conservados y relieves detallados que reflejan la riqueza cultural del lugar. Aunque sufrió daños significativos en tiempos recientes debido a conflictos, Hatra sigue siendo un símbolo invaluable del patrimonio histórico de Irak y una fuente importante para entender las civilizaciones que habitaron Mesopotamia.`)" ondblclick="ocultar()"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!--carrusel-->
 
 
 <div id="controls-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div class="relative h-106 overflow-hidden rounded-lg md:h-96" style="height: 600px;">
          <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="irak.webp" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            <h1 style="color: black;">Vestimenta tradicional masculina en Irak</h1>
+        <div class="hidden duration-700 ease-in-out" style="background-color: rgba(0, 0, 0, 0.397);" data-carousel-item>
+            <img src="Dishdasha.jpg" style="width: 45%; height: 99%; left: 310px; " class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...";">
+            <h1 style="color: rgb(255, 255, 255); text-align: center;">Dishdasha</h1>
+            <br>
+            <h2 style=" font-size: 12pt; color: rgb(255, 255, 255); position: relative; left: 54%; width: 600px; height: 100%;">
+              La Dishdasha es una prenda tradicional masculina que forma parte esencial de la identidad cultural de Irak y de muchos países árabes del Golfo. Esta túnica larga, que cubre desde los hombros hasta los tobillos, se caracteriza por su corte recto y suelto, lo que proporciona frescura y comodidad en los climas áridos y calurosos que predominan en la región. En Irak, su uso no se limita a contextos religiosos o festivos, sino que también es común en la vida diaria, especialmente entre hombres adultos y mayores, y en las zonas rurales donde la tradición se mantiene con más fuerza.
+
+Generalmente confeccionada en telas ligeras como algodón o lino, la Dishdasha suele ser de color blanco, ya que este tono refleja el calor del sol y ayuda a mantener una temperatura corporal más fresca. Sin embargo, en estaciones más frías o durante ocasiones formales, pueden encontrarse dishdashas en tonos grises, marrones, azules oscuros o incluso negros. El cuello puede ser redondo o en forma de "V", y algunos modelos incluyen botones decorativos o bolsillos discretos en el pecho o los laterales.
+
+Este tipo de vestimenta no solo cumple una función práctica, sino que también representa un fuerte vínculo con las tradiciones islámicas y los valores de modestia y sencillez. En ocasiones formales o religiosas, la Dishdasha se complementa con el keffiyeh o shemagh, un pañuelo que se coloca sobre la cabeza, y el iqal, un cordón negro que lo sostiene en su lugar. Esta combinación completa el atuendo clásico y refuerza el orgullo por la herencia cultural iraquí.
+
+A pesar de la modernización y la influencia de la ropa occidental en las grandes ciudades, la Dishdasha sigue siendo un símbolo de respeto, dignidad y continuidad cultural. Para muchos, vestirla es también una forma de expresar identidad nacional y de rendir homenaje a generaciones pasadas que la han usado durante siglos.</h2>
         </div>
         <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="irakv.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active" style="background-color: rgba(245, 245, 220, 0.37);">
+            <img src="Abaya masculina.jpg" style="width: 35%; border-radius: 30px; height: 89%; left: 310px; "  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <h1 style="color: rgb(255, 255, 255); text-align: center;">Abaya masculina </h1>
+            <h2 style=" font-size: 12pt; color: rgb(255, 255, 255); position: relative; left: 54%; width: 600px; height: 100%; top: 10px;">
+              La abaya masculina, también conocida en muchos países árabes como dishdasha, thobe o jalabiya, es una prenda tradicional larga que cubre el cuerpo desde los hombros hasta los tobillos, usada principalmente por hombres en países del Golfo, como Arabia Saudita, Kuwait, Emiratos Árabes Unidos y también en regiones de Irak y Siria. Aunque el término abaya suele asociarse más comúnmente con la vestimenta femenina, en contextos específicos también se utiliza para describir variantes de túnicas masculinas sueltas y elegantes que reflejan modestia, prestigio y pertenencia cultural. Estas prendas son generalmente de colores sobrios, predominando el blanco para el uso cotidiano en climas cálidos y el negro, gris o azul oscuro para ocasiones formales o durante los meses más fríos. Su confección suele realizarse con tejidos ligeros como algodón, lino o mezclas sintéticas que favorecen la ventilación en climas desérticos. La abaya masculina no solo cumple una función práctica frente al calor, sino que también tiene un importante valor simbólico y religioso, ya que representa modestia, limpieza y respeto por la tradición islámica. En muchos casos, se combina con accesorios distintivos como el ghutra o keffiyeh (pañuelo para la cabeza) y el agal (cordón negro que lo sostiene), completando un atuendo que ha perdurado a lo largo de generaciones como un emblema de identidad y orgullo cultural árabe.
+            </h2>
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="irakper1.webp" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
+            <img src="khaleej.jpg" style="width: 35%; border-radius: 30px; height: 89%; left: 310px; " class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          <h1 style="color: rgb(255, 255, 255); text-align: center;">Thobe o Jalabiya</h1>
+          <h2 style=" font-size: 12pt; color: rgb(255, 255, 255); position: relative; left: 54%; width: 600px; height: 100%; top: 10px;">
+          El thobe (también escrito thawb) y la jalabiya (o galabiya) son dos prendas tradicionales masculinas muy similares en apariencia, pero que varían ligeramente en estilo, uso y origen regional dentro del mundo árabe e islámico. Ambas son túnicas largas que cubren desde los hombros hasta los tobillos y están diseñadas para brindar comodidad y modestia en climas cálidos, pero su historia y detalles reflejan diferencias culturales sutiles.
+
+El thobe es típico de los países del Golfo, como Arabia Saudita, Catar, Emiratos Árabes Unidos y Kuwait. Su diseño es más ajustado, con costuras más formales, cuello alzado y a menudo botones en el pecho, lo que le da una apariencia elegante y sobria. Es comúnmente blanco, aunque en invierno se puede ver en tonos oscuros como gris o marrón. El thobe suele usarse tanto en contextos cotidianos como en ceremonias religiosas y eventos oficiales, reflejando estatus y respeto por las tradiciones islámicas.
+
+La jalabiya, por otro lado, tiene raíces más fuertes en Egipto, Sudán y partes del Levante. Su diseño es más suelto, sin cuello estructurado, y puede ser más colorido, dependiendo del contexto. En comparación con el thobe, la jalabiya tiende a ser más relajada y cómoda, usada comúnmente en ambientes domésticos o informales. En algunas regiones rurales, los hombres también la usan como ropa de trabajo ligera.
+
+En resumen, aunque el thobe y la jalabiya cumplen funciones similares y pueden parecer iguales a simple vista, representan expresiones culturales distintas: el thobe, más estructurado y formal, se asocia con el Golfo Árabe, mientras que la jalabiya, más suelta y tradicionalmente colorida, es representativa del Nilo y otras partes del norte de África y el Levante.
+          </h2>
+          </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-    </div>
+            <img src="velo-islamico.png" style="width: 35%; border-radius: 30px; height: 89%; left: 310px;  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        <h1 style=";color: rgb(255, 255, 255); text-align: center;">Niqab o chador</h1>
+        <h2 style="font-size: 12pt; color: rgb(255, 255, 255); position: relative; left: 54%; width: 600px; height: 100%; top: 10px;">
+          El niqab y el chador son prendas tradicionales utilizadas por algunas mujeres en Irak, y aunque ambas están vinculadas con la modestia y la práctica del islam, representan diferentes estilos de cobertura y tienen orígenes culturales distintos. El niqab es un velo que cubre por completo el rostro, dejando solo los ojos al descubierto, y se usa generalmente junto con una abaya (una túnica negra que cubre el cuerpo) u otras prendas largas. Esta vestimenta es común en zonas de Irak donde predomina una interpretación más conservadora de la religión, especialmente en regiones rurales o dentro de comunidades profundamente religiosas. El niqab suele ser de color negro, aunque también existen versiones en tonos oscuros o con detalles decorativos mínimos. Su función no es únicamente estética o tradicional, sino que representa una expresión de fe, pudor y una identidad religiosa centrada en el respeto hacia los valores islámicos de recato.
+
+Por otro lado, el chador es una prenda más asociada con las mujeres chiitas, especialmente influenciada por la tradición iraní, pero también utilizada en algunas regiones del sur de Irak donde la población chiita es numerosa. El chador consiste en un gran manto semicircular que cubre completamente el cuerpo desde la cabeza hasta los pies, pero, a diferencia del niqab, no cubre el rostro. Se sostiene con las manos o se sujeta ligeramente bajo el mentón, y debajo se suele llevar un hijab o velo que cubre el cabello. El chador se asocia fuertemente con la religiosidad, la espiritualidad y la participación en actividades como la oración o las visitas a lugares sagrados, como los santuarios chiitas de Karbala y Najaf, donde es común ver a muchas mujeres usándolo como muestra de respeto y devoción.
+
+Ambas prendas, aunque diferentes en forma y nivel de cobertura, son expresiones culturales y religiosas profundas que forman parte de la vida de muchas mujeres en Irak. Su uso puede estar influenciado por factores como la región geográfica, la tradición familiar, la identidad religiosa, la edad y la ocasión. Para algunas mujeres, llevar el niqab o el chador es una elección personal cargada de significado espiritual; para otras, es una costumbre heredada que mantiene viva la conexión con sus raíces. En cualquier caso, estas vestimentas siguen siendo símbolos visibles de una rica tradición cultural que ha perdurado a lo largo del tiempo en el corazón del mundo árabe.
+        </h2>
+          </div>
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -187,20 +235,182 @@ onclick="mostrar(this, `Hatra fue una ciudad antigua fortificada situada en el d
         </span>
     </button>
 </div>
-
 <!--findecarrusel-->
 
+<img src="idiomairak.jpg" alt="" style="position: absolute; width: 500px; height: 500px; top: 800px; left: 50px; border-radius: 40px;">
+<h1 style="width: 780px; height: 500px; position: relative; left: 570px; top: 130px;">
+  Irak es un país de gran diversidad lingüística, reflejo de su compleja historia y su rica mezcla de pueblos y culturas. Aunque los idiomas oficiales son el árabe y el kurdo, en diferentes regiones del país se hablan muchas otras lenguas minoritarias. El árabe es el idioma predominante y el más hablado en todo el territorio nacional, especialmente en las regiones centrales y del sur. Es la lengua utilizada por el gobierno, la educación pública, los medios de comunicación nacionales y la vida cotidiana de la mayoría de la población. Sin embargo, el árabe que se habla en Irak tiene particularidades propias, con varios dialectos regionales como el árabe iraquí, distinto al que se habla en otros países árabes.
 
+El kurdo, por su parte, es la lengua principal en la región autónoma del Kurdistán iraquí, en el norte del país, donde también es lengua oficial. Dentro del kurdo existen dos grandes dialectos: sorani, que es el más hablado en Irak, y kurmanji, más común en países vecinos como Turquía y Siria. El kurdo es utilizado ampliamente en la administración regional, en escuelas y universidades kurdas, así como en medios de comunicación locales.
 
+Además de estas lenguas oficiales, existen comunidades que hablan idiomas minoritarios, profundamente arraigados en la historia cultural y religiosa del país. Entre ellos se encuentra el turcomano, una variante del turco hablada por la comunidad turcomana, principalmente en ciudades del norte como Kirkuk y Tal Afar. Otra lengua importante es el asirío o neoarameo, hablado por cristianos asirios y caldeos que viven en zonas como Nínive, Dohuk o Alqosh. Este idioma tiene un valor histórico especial, ya que proviene del antiguo arameo, la lengua que se hablaba en la antigua Mesopotamia y que incluso, según la tradición, fue hablada por Jesucristo.
 
+También se habla armenio en pequeñas comunidades, sobre todo en ciudades como Bagdad y Basora, donde hay presencia histórica de armenios. Otras lenguas, como el persa, pueden encontrarse en comunidades cercanas a la frontera con Irán, especialmente entre peregrinos, comerciantes o religiosos chiitas. Existen además idiomas menos conocidos como el domari, hablado por algunos grupos gitanos, y variantes del arameo moderno empleadas en contextos litúrgicos o familiares.
 
+En conjunto, esta diversidad lingüística convierte a Irak en un país multicultural donde conviven múltiples lenguas, muchas de ellas con raíces milenarias. A pesar de los conflictos y tensiones históricas, estas lenguas representan la riqueza cultural de un territorio que fue cuna de las civilizaciones más antiguas del mundo.</h1>
+<img src="irakv.svg" alt="" id="sex" onclick="tirar()">
 
+<video id="video" src="videoplayback.mp4" controls></video>
 
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--footer-->
+<footer class="bg-white dark:bg-gray-900">
+    <div class="mx-auto w-full max-w-screen-xl">
+      <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+        <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                    <a href="#" class=" hover:underline">About</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Careers</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Brand Center</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Blog</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Discord Server</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Twitter</a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://www.facebook.com/photo/?fbid=1938200846679352&set=ecnf.100014683657983&locale=es_LA" class="hover:underline">Facebook</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Licensing</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">iOS</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Android</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">Windows</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="hover:underline">MacOS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights Reserved.
+        </span>
+        <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+            <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+                    </svg>
+                  <span class="sr-only">Facebook page</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                        <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
+                    </svg>
+                  <span class="sr-only">Discord community</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                    <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"/>
+                </svg>
+                  <span class="sr-only">Twitter page</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="sr-only">GitHub account</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"/>
+                </svg>
+                  <span class="sr-only">Dribbble account</span>
+              </a>
+        </div>
+      </div>
+    </div>
+</footer>
 
-
-
-
-
+<!--findefootre-->
 
 
 
