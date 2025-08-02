@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <title>Siria</title>
+<link rel="stylesheet" href="steyle.css">
+<script>
+  let activa = null;
+
+    window.onload = function () {
+      let imagenes = document.getElementsByClassName('imagen-personaje');
+      for (let i = 0; i < imagenes.length; i++) {
+        let img = imagenes[i];
+        if (!img.getAttribute('data-left')) {
+          img.setAttribute('data-left', img.style.left);
+        }
+      }
+    };
+
+    function mostrar(img, texto) {
+      activa = img;
+      img.style.left = '0px';
+
+      let imagenes = document.getElementsByClassName('imagen-personaje');
+      for (let i = 0; i < imagenes.length; i++) {
+        if (imagenes[i] !== img) {
+          imagenes[i].style.display = 'none';
+        }
+      }
+
+      let cuadro = document.getElementById('mag');
+      cuadro.style.top = img.style.top;
+      cuadro.style.width = 'calc(100% - 420px)';
+      document.getElementById('contenido').innerText = texto;
+    }
+
+    function ocultar() {
+      if (!activa) return;
+
+      activa.style.left = activa.getAttribute('data-left');
+
+      let imagenes = document.getElementsByClassName('imagen-personaje');
+      for (let i = 0; i < imagenes.length; i++) {
+        imagenes[i].style.display = 'block';
+      }
+
+      let cuadro = document.getElementById('mag');
+      cuadro.style.width = '0%';
+      cuadro.style.top = '-800px';
+      document.getElementById('contenido').innerText = 'cargando...';
+
+      activa = null;
+    }
+
+    function tirar() {
+      const img = document.getElementById('sex');
+      const video = document.getElementById('video');
+
+      img.style.left = '1000px';
+
+      img.addEventListener('transitionend', function handler() {
+        img.style.display = 'none';
+
+        video.style.left = '0px';
+        video.style.top = img.style.top;
+        video.style.width = img.style.width;
+        video.style.display = 'block';
+
+        img.removeEventListener('transitionend', handler);
+      });
+    }
+</script>
+
+</head>
+<body>
+
+<!--nav-->
+<nav class="bg-green-900 border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="siriav.svg" class="h-8" alt="Flowbite Logo" style="border-radius: 30px;"  >
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Siria</span>
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--findenav-->
+
+
+
+
+
+<div id="mag">
+<p id="contenido"></p>
+</div>
+<img src="perso2.jpg" id="img1" class="imagen-personaje" style="left: 50px; border-radius: 30px; top: 100px;" onclick="mostrar(this, `Zaha Hadid (1950–2016) fue una reconocida arquitecta iraquí-británica y una de las figuras más influyentes de la arquitectura contemporánea. Nacida en Bagdad, estudió matemáticas antes de formarse en arquitectura en Londres, donde más tarde fundó su propio estudio. Fue la primera mujer en recibir el prestigioso Premio Pritzker en 2004. Su estilo se caracteriza por formas futuristas, líneas curvas, estructuras dinámicas y un enfoque audaz que rompió con la rigidez tradicional. Entre sus obras más famosas están el Centro Heydar Aliyev en Azerbaiyán, el Museo MAXXI en Roma y la Ópera de Guangzhou en China. Su trabajo revolucionó el diseño arquitectónico global, dejando un legado duradero.`)" ondblclick="ocultar()">
+<img src="perso2.jpg" id="img2" class="imagen-personaje" style="left: 940px; border-radius: 30px; top: 510px;" onclick="mostrar(this, `Zaha Hadid (1950–2016) fue una reconocida arquitecta iraquí-británica y una de las figuras más influyentes de la arquitectura contemporánea. Nacida en Bagdad, estudió matemáticas antes de formarse en arquitectura en Londres, donde más tarde fundó su propio estudio. Fue la primera mujer en recibir el prestigioso Premio Pritzker en 2004. Su estilo se caracteriza por formas futuristas, líneas curvas, estructuras dinámicas y un enfoque audaz que rompió con la rigidez tradicional. Entre sus obras más famosas están el Centro Heydar Aliyev en Azerbaiyán, el Museo MAXXI en Roma y la Ópera de Guangzhou en China. Su trabajo revolucionó el diseño arquitectónico global, dejando un legado duradero.`)" ondblclick="ocultar()">
+<img src="person3.jpg" id="img3" class="imagen-personaje" style="left: 50px; border-radius: 30px; top:920px;" onclick="mostrar(this, `Nazik al-Malaika (1923–2007) fue una destacada poeta iraquí y pionera de la poesía árabe moderna, conocida por introducir el verso libre en la literatura árabe con su poema El lamento del marinero (1947). Nacida en Bagdad en una familia culta, combinó su formación académica en literatura con una profunda sensibilidad artística. Sus obras abordan temas como la soledad, la condición de la mujer, la injusticia social y la angustia existencial. Vivió en el exilio por motivos políticos, enseñando en universidades de países como Egipto y Kuwait. Su estilo innovador y su voz crítica la convirtieron en una figura clave del modernismo literario árabe.`)" ondblclick="ocultar()">
+
+<h1 style="position: absolute; top: 1360px; left: 45%; font-size: 17pt;">historia siria</h1>
+<img src="histroiasiria.webp" alt="" style="position: absolute; top: 1400px; border-radius: 60px; left: 794px; width: 500px; height: 500px;">
+<h2 style="top: 1400px; position: absolute; width: 600px; height: 400px; left: 20px;">
+    Siria, ubicada en el corazón del Levante, posee una de las historias más antiguas y ricas del mundo. Desde tiempos prehistóricos, su territorio fue hogar de civilizaciones agrícolas del Neolítico, y más tarde albergó a culturas avanzadas como la de Ebla, una de las primeras ciudades-estado en registrar escritura cuneiforme. Debido a su ubicación estratégica entre Mesopotamia, Anatolia y Egipto, Siria fue escenario de invasiones y conquistas por parte de imperios sucesivos: acadios, hititas, egipcios, asirios, babilonios y persas. Tras la conquista de Alejandro Magno, la región pasó al dominio helenístico y posteriormente fue integrada al Imperio Romano, convirtiéndose en una próspera provincia con ciudades como Antioquía. Con la llegada del islam en el siglo VII, Siria se convirtió en el centro del Califato Omeya, con Damasco como capital y símbolo del poder islámico. Aunque perdió protagonismo tras el ascenso de los abasíes, siguió siendo una región culturalmente activa. En los siglos siguientes, sufrió invasiones cruzadas, mongolas y el control de diversas dinastías islámicas, hasta caer en manos del Imperio Otomano en 1516, bajo el cual permaneció durante cuatro siglos. Tras la Primera Guerra Mundial y la caída del Imperio Otomano, Siria fue colocada bajo mandato francés, un periodo marcado por levantamientos nacionalistas y represión. Finalmente, en 1946, Siria logró su independencia y se convirtió en república, aunque su historia moderna ha estado marcada por inestabilidad política, golpes de Estado, la unión fallida con Egipto y, desde el año 2000, la dinastía de los Assad. Desde 2011, el país sufre una devastadora guerra civil, originada por protestas populares contra el régimen de Bashar al-Assad, que degeneró en un conflicto internacionalizado con consecuencias humanitarias trágicas, millones de desplazados y una profunda crisis social, económica y cultural que aún continúa.
+</h2>
+
+<h1 style="position: absolute; top: 2060px; left: 34%; font-size: 17pt;">Crisis humanitaria y refugiados sirios</h1>
+<img src="Crisis humanitaria y refugiados sirios.webp" alt="" style="position: absolute; top: 2200px; border-radius: 60px; left: 20px; width: 500px; height: 500px;">
+<h2 style="top: 2100px; position: absolute; width: 720px; height: 400px; left: 620px;">
+   La crisis humanitaria en Siria es una de las más devastadoras del siglo XXI y ha tenido consecuencias profundas tanto dentro del país como a nivel internacional. Comenzó en 2011, cuando estallaron protestas pacíficas en el contexto de la Primavera Árabe, exigiendo reformas democráticas y el fin del régimen autoritario de Bashar al-Assad. La brutal represión estatal desencadenó una guerra civil que rápidamente se volvió un conflicto múltiple y fragmentado, involucrando a grupos rebeldes, milicias islamistas, potencias regionales como Irán, Turquía y Arabia Saudita, así como potencias mundiales como Rusia y Estados Unidos. El resultado ha sido una catástrofe humanitaria de enormes proporciones: más de 500,000 personas han muerto, millones han quedado heridas, y el país ha sido destruido en vastas regiones. Las ciudades han sido bombardeadas indiscriminadamente, la infraestructura básica (hospitales, escuelas, plantas de agua) ha colapsado, y la economía nacional se ha desmoronado.
+
+Una de las consecuencias más graves ha sido el desplazamiento masivo de la población. Según cifras de la ONU, más de 13 millones de sirios han sido forzados a abandonar sus hogares: alrededor de 7 millones son desplazados internos que viven en condiciones precarias dentro del país, y más de 6 millones han buscado refugio en el extranjero, especialmente en países vecinos como Turquía (que alberga la mayor población de refugiados sirios), Líbano, Jordania e Irak. Muchos también han buscado asilo en Europa, provocando una de las mayores crisis migratorias en el continente desde la Segunda Guerra Mundial. En muchos casos, los refugiados viven en campos sobrepoblados, sin acceso adecuado a salud, educación o empleo, y enfrentan discriminación, pobreza extrema y traumas psicológicos profundos por la guerra y la separación familiar. Niños sirios han crecido sin conocer otra realidad que no sea la del exilio, el conflicto o el miedo.
+
+Además, la ayuda internacional ha sido insuficiente o irregular, en parte debido a las dificultades para acceder a zonas controladas por diversos grupos armados, la politización de la ayuda y el agotamiento de fondos por parte de los países donantes. La guerra ha dejado una generación marcada por el sufrimiento y ha destruido la estructura social del país. Incluso si el conflicto armado llegara a su fin, la reconstrucción física y emocional de Siria llevará décadas. La crisis de los refugiados sirios no solo es un drama humano, sino también un desafío político, económico y moral para la comunidad internacional, que aún no ha encontrado una solución eficaz ni duradera al sufrimiento de millones de personas desplazadas por la guerra.
+</h2>
+
+<h1 style="position: absolute; top: 2860px; left: 45%; font-size: 17pt;">La guerra civil en Siria</h1>
+<img src="la guerracivil.jpg" alt="" style="position: absolute; top: 3070px; border-radius: 60px; left: 794px; width: 500px; height: 500px;">
+<h2 style="top: 2900px; position: absolute; width: 600px; height: 400px; left: 20px;">
+ La guerra civil en Siria comenzó en marzo de 2011 como una serie de protestas pacíficas impulsadas por ciudadanos que exigían reformas democráticas, libertad política y el fin de décadas de represión por parte del régimen de Bashar al-Ásad. Estas manifestaciones se enmarcaron dentro de la llamada Primavera Árabe, un movimiento regional que buscaba mayores libertades en varios países del mundo árabe. Sin embargo, la respuesta del gobierno sirio fue extremadamente violenta: las fuerzas de seguridad dispararon contra manifestantes, realizaron arrestos masivos y reprimieron brutalmente cualquier forma de disidencia. Esta represión desató una escalada que derivó en un conflicto armado generalizado.
+
+Con el tiempo, la guerra se volvió cada vez más compleja y multifacética, involucrando a numerosos actores internos y externos. Por un lado, el régimen de al-Ásad, apoyado por Rusia e Irán, logró mantenerse en el poder utilizando la fuerza militar y contando con el respaldo de milicias extranjeras. Por otro lado, surgieron múltiples grupos rebeldes con ideologías diversas, incluyendo tanto opositores democráticos como facciones extremistas. Uno de los factores más caóticos fue el ascenso del grupo terrorista ISIS (Estado Islámico), que aprovechó el vacío de poder para establecer un califato en territorio sirio e iraquí. A su vez, las fuerzas kurdas en el norte del país tomaron el control de varias regiones, generando tensiones con Turquía, que considera a algunos grupos kurdos como terroristas. Estados Unidos, por su parte, intervino en apoyo a los kurdos y en la lucha contra el terrorismo, mientras que Rusia intervino militarmente en favor del gobierno sirio desde 2015, cambiando el equilibrio del conflicto a favor de Damasco.
+
+Las consecuencias de esta guerra han sido catastróficas: más de 500,000 personas han muerto, millones han resultado heridas, y más de 13 millones han sido desplazadas, tanto dentro como fuera del país. Muchas ciudades han sido completamente destruidas por bombardeos, y se han documentado graves violaciones a los derechos humanos, incluyendo torturas, ataques con armas químicas, ejecuciones extrajudiciales y el uso de civiles como escudos humanos. A pesar de que el gobierno ha logrado recuperar el control de gran parte del territorio sirio con ayuda extranjera, el país sigue profundamente dividido, con áreas controladas por fuerzas kurdas, tropas extranjeras o grupos rebeldes. La guerra ha destruido el tejido social, la economía y la infraestructura del país, y aunque ha disminuido en intensidad en algunos frentes, no existe hasta ahora una solución política clara ni una reconciliación nacional efectiva, lo que mantiene a Siria en un estado de crisis prolongada e incierta.
+</h2>
+
+<!--carrusel-->
+<div id="indicators-carousel" class="relative w-full" data-carousel="static" style="position: absolute; top: 3500px;">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<!--findecarruseñ-->
+
+
+
+
+
+
+
+
+</body>
+</html>

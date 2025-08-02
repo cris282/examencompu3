@@ -60,21 +60,17 @@
     const img = document.getElementById('sex');
     const video = document.getElementById('video');
 
-    // Mover la imagen a la derecha
     img.style.left = '1000px';
 
-    // Esperar a que termine la transición
     img.addEventListener('transitionend', function handler() {
       // Ocultar la imagen
       img.style.display = 'none';
 
-      // Posicionar y mostrar el video en su lugar original
       video.style.left = '0px';
       video.style.top = img.style.top;
       video.style.width = img.style.width;
       video.style.display = 'block';
 
-      // Remover listener para que no se active varias veces
       img.removeEventListener('transitionend', handler);
     });
   }
